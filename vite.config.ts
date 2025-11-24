@@ -10,7 +10,8 @@ export default defineConfig(({ mode }) => {
     plugins: [react()],
     define: {
       // Polyfill process.env.API_KEY to accept either API_KEY or VITE_API_KEY
-      'process.env.API_KEY': JSON.stringify(env.API_KEY || env.VITE_API_KEY)
+      // This ensures it works on both local dev and Railway production
+      'process.env.API_KEY': JSON.stringify(env.VITE_API_KEY || env.API_KEY)
     },
     server: {
       port: 3000
