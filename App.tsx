@@ -108,6 +108,35 @@ const App: React.FC = () => {
         {/* Dashboard View */}
         {activeTab === Tab.DASHBOARD && (
           <div className="space-y-8 animate-fade-in">
+             {/* Budget Progress Section */}
+            <div className="bg-white p-6 rounded-xl shadow-sm border border-slate-100">
+              <div className="flex justify-between items-end mb-3">
+                 <div>
+                   <h2 className="text-lg font-bold text-slate-800">Overall Progress</h2>
+                   <p className="text-sm text-slate-500">Budget utilization tracking</p>
+                 </div>
+                 <div className="text-right">
+                   <span className={`text-2xl font-bold ${progressPercentage > 90 ? 'text-red-500' : 'text-slate-800'}`}>
+                     {progressPercentage.toFixed(1)}%
+                   </span>
+                   <p className="text-xs text-slate-400">used</p>
+                 </div>
+              </div>
+              <div className="w-full bg-slate-100 rounded-full h-3 overflow-hidden">
+                 <div 
+                   className={`h-full rounded-full transition-all duration-1000 ease-out ${
+                      progressPercentage > 90 ? 'bg-red-500' : 
+                      progressPercentage > 75 ? 'bg-amber-500' : 'bg-indigo-500'
+                   }`}
+                   style={{ width: `${progressPercentage}%` }}
+                 ></div>
+              </div>
+              <div className="flex justify-between mt-2 text-xs text-slate-400 font-medium">
+                 <span>{settings.currency}0</span>
+                 <span>{settings.currency}{settings.totalBudget.toLocaleString()}</span>
+              </div>
+            </div>
+
             {/* Stats Grid */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <StatCard 
