@@ -9,8 +9,8 @@ export default defineConfig(({ mode }) => {
   return {
     plugins: [react()],
     define: {
-      // Polyfill process.env.API_KEY so the existing code works without modification
-      'process.env.API_KEY': JSON.stringify(env.API_KEY)
+      // Polyfill process.env.API_KEY to accept either API_KEY or VITE_API_KEY
+      'process.env.API_KEY': JSON.stringify(env.API_KEY || env.VITE_API_KEY)
     },
     server: {
       port: 3000
