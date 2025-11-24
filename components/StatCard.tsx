@@ -27,7 +27,7 @@ export const StatCard: React.FC<StatCardProps> = ({ title, value, subtitle, tren
           )}
         </div>
         <div className={`p-3 rounded-lg ${colorClass} bg-opacity-10`}>
-          {React.cloneElement(icon as React.ReactElement, { className: `w-6 h-6 ${colorClass.replace('bg-', 'text-')}` })}
+          {React.cloneElement(icon as React.ReactElement<{ className?: string }>, { className: `w-6 h-6 ${colorClass.replace('bg-', 'text-')}` })}
         </div>
       </div>
     </div>
